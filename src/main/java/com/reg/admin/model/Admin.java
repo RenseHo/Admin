@@ -1,27 +1,31 @@
 package com.reg.admin.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.*;
+import java.util.*;
+
 
 @Entity
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    private int id;
+    private String name;
 
-    String name;
-    String category;
+    //@OneToMany(mappedBy = "admin")
+    //@JoinColumn(name = "ADMIN_BRAND")
+/*    @JoinTable(name = "ADMIN_BRAND",
+            joinColumns = @JoinColumn(name="ADMIN_IDS"),
+        inverseJoinColumns = @JoinColumn(name = "BRAND_IDS")
+    )
+*/
+    @ManyToMany
+    private Collection<Brand> brandList = new ArrayList();
+
+    @Temporal(TemporalType.DATE)
+    private Date registrationDate;
+    private String description;
 
     public Admin () {}
-
-    public Admin(int id, String name, String category) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-    }
 
     public int getId() {
         return id;
@@ -39,12 +43,28 @@ public class Admin {
         this.name = name;
     }
 
-    public String getCategory() {
-        return category;
+    public Collection<Brand> getBrandList() {
+        return brandList;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setBrandList(Collection<Brand> brandList) {
+        this.brandList = brandList;
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -52,7 +72,25 @@ public class Admin {
         return "Admin{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", category='" + category + '\'' +
+                ", registrationDate=" + registrationDate +
+                ", description='" + description + '\'' +
                 '}';
     }
+
+    /*
+        @Embedded
+    Category category;
+        @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name="cName", column=@Column(name = "SUB_CAT_NAME")),
+        @AttributeOverride(name="cDiscription", column=@Column(name = "SUB_CAT_DESRIPTION"))
+    })
+    Category sub_category;
+
+        @ElementCollection
+    @JoinTable(name = "ADMIN_BRAND", joinColumns = @JoinColumn(name = "PRODUCT_ID")
+    )
+    private Collection<Brand> listOfBrands =  new ArrayList<Brand>();
+
+     */
 }

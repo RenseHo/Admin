@@ -1,42 +1,29 @@
 package com.reg.admin.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class Category {
 
-    int id;
-    String catName;
+    //@Column(name = "CATEGORY_NAME")
+    private String cName;
+    //@Column(name = "CATEGORY_DISCRIPTION")
+    private String cDiscription;
 
-    public Category() {
+    public String getcName() {
+        return cName;
     }
 
-    public Category(int id, String catName) {
-        this.id = id;
-        this.catName = catName;
+    public void setcName(String cName) {
+        this.cName = cName;
     }
 
-    public int getId() {
-        return id;
+    public String getcDiscription() {
+        return cDiscription;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCatName() {
-        return catName;
-    }
-
-    public void setCatName(String catName) {
-        this.catName = catName;
-    }
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", catName='" + catName + '\'' +
-                '}';
+    public void setcDiscription(String cDiscription) {
+        this.cDiscription = cDiscription;
     }
 }

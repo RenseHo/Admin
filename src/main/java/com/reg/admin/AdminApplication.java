@@ -1,5 +1,7 @@
 package com.reg.admin;
 
+import com.reg.admin.controllers.AdminController;
+import com.reg.admin.model.Admin;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

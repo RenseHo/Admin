@@ -8,4 +8,5 @@ import com.reg.admin.model.*;
 @Repository
 public interface AdminService extends CrudRepository<Admin, Integer> {
 
+
 }
