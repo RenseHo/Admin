@@ -18,6 +18,10 @@
           <option name="url" value="https://github.com/eugenp/tutorials/tree/master/spring-rest" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/jbloch/effective-java-3e-source-code.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Java\Projects" />
